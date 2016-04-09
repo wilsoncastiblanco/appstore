@@ -2,6 +2,8 @@ package com.grability.appstore.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by wilson on 7/04/16.
  */
@@ -17,5 +19,21 @@ public class Category {
         this.term = term;
         this.scheme = scheme;
         this.label = label;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getScheme() {
+        return scheme;
+    }
+
+    public String getTerm() {
+        return term;
     }
 }

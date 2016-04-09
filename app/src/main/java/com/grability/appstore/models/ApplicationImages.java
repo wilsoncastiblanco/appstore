@@ -9,4 +9,8 @@ public class ApplicationImages {
     public ApplicationImages(int height) {
         this.height = height;
     }
+
+    public int getHeight() {
+        return height;
+    }
 }

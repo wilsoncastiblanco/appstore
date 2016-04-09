@@ -9,4 +9,8 @@ public class ApplicationArtist {
     public ApplicationArtist(String href) {
         this.href = href;
     }
+
+    public String getHref() {
+        return href;
+    }
 }

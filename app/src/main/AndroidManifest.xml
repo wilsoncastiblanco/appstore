@@ -23,6 +23,11 @@
             android:name=".modules.categories.CategoriesActivity"
             android:label="@string/title_activity_categories"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".modules.loader.LoaderActivity"
+            android:label="@string/title_activity_loader"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

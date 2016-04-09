@@ -1,5 +1,7 @@
 package com.grability.appstore.models;
 
+import io.realm.RealmObject;
+
 /**
  * Created by wilson on 7/04/16.
  */
@@ -12,5 +14,17 @@ public class ApplicationLink {
         this.href = href;
         this.rel = rel;
         this.type = type;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public String getRel() {
+        return rel;
+    }
+
+    public String getType() {
+        return type;
     }
 }

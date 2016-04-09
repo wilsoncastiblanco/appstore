@@ -10,8 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".modules.splash.SplashActivity">
 
-    <com.grability.appstore.base.StateView
-        android:id="@+id/state"
+    <com.grability.appstore.base.SvgView
+        android:id="@+id/splashLogo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -19,5 +19,5 @@
         r:duration="3000"
         r:fadeFactor="10.0"
         r:strokeWidth="2.0"
-        r:strokeColor="#212121"/>
+        r:strokeColor="@color/primary_text"/>
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.grability.appstore.modules.categories.CategoriesActivity;
+import com.grability.appstore.modules.loader.LoaderActivity;
 
 
 public class IntentUtil {
@@ -14,6 +15,10 @@ public class IntentUtil {
 
   public static void startActivity(Context context, Class<?> cls) {
     context.startActivity(new Intent(context, cls));
+  }
+
+  public static void startLoaderActivity(Activity activity){
+    startActivity(activity, LoaderActivity.class);
   }
 
   public static void startCategoriesActivity(Activity activity){
