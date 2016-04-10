@@ -190,16 +190,4 @@ public class SvgView extends View {
             canvas.restore();
         }
     }
-
-    public void reveal(View scroller, int parentBottom) {
-        if (mSvgAnimator == null) {
-            mSvgAnimator = ObjectAnimator.ofFloat(this, "phase", 0.0f, 1.0f);
-            mSvgAnimator.setDuration(mDuration);
-            mSvgAnimator.start();
-        }
-
-        float previousOffset = mOffsetY;
-        mOffsetY = Math.min(0, scroller.getHeight() - (parentBottom - scroller.getScrollY()));
-        if (previousOffset != mOffsetY) invalidate();
-    }
 }
