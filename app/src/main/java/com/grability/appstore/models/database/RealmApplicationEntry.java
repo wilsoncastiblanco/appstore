@@ -7,33 +7,41 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationEntryRealm extends RealmObject{
+public class RealmApplicationEntry extends RealmObject{
     @PrimaryKey
     private String id;
     private String name;
-    private RealmList<ApplicationImagesRealm> imagesList;
+    private RealmList<RealmImages> imagesList;
     private String summary;
-    private ApplicationPriceRealm price;
+    private RealmPrice price;
     private String rights;
     private String title;
-    private ApplicationLinkRealm link;
-    private ApplicationArtistRealm artist;
-    private CategoryRealm category;
+    private String link;
+    private RealmArtist artist;
+    private RealmCategory category;
     private String releaseDate;
 
-    public ApplicationArtistRealm getArtist() {
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public RealmArtist getArtist() {
         return artist;
     }
 
-    public void setArtist(ApplicationArtistRealm artist) {
+    public void setArtist(RealmArtist artist) {
         this.artist = artist;
     }
 
-    public CategoryRealm getCategory() {
+    public RealmCategory getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryRealm category) {
+    public void setCategory(RealmCategory category) {
         this.category = category;
     }
 
@@ -45,20 +53,12 @@ public class ApplicationEntryRealm extends RealmObject{
         this.id = id;
     }
 
-    public RealmList<ApplicationImagesRealm> getImagesList() {
+    public RealmList<RealmImages> getImagesList() {
         return imagesList;
     }
 
-    public void setImagesList(RealmList<ApplicationImagesRealm> imagesList) {
+    public void setImagesList(RealmList<RealmImages> imagesList) {
         this.imagesList = imagesList;
-    }
-
-    public ApplicationLinkRealm getLink() {
-        return link;
-    }
-
-    public void setLink(ApplicationLinkRealm link) {
-        this.link = link;
     }
 
     public String getName() {
@@ -69,11 +69,11 @@ public class ApplicationEntryRealm extends RealmObject{
         this.name = name;
     }
 
-    public ApplicationPriceRealm getPrice() {
+    public RealmPrice getPrice() {
         return price;
     }
 
-    public void setPrice(ApplicationPriceRealm price) {
+    public void setPrice(RealmPrice price) {
         this.price = price;
     }
 

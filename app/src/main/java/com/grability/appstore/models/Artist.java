@@ -3,10 +3,10 @@ package com.grability.appstore.models;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationArtist {
+public class Artist {
     private final String href;
 
-    public ApplicationArtist(String href) {
+    public Artist(String href) {
         this.href = href;
     }
 

@@ -5,7 +5,7 @@ import io.realm.RealmObject;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationPriceRealm extends RealmObject {
+public class RealmPrice extends RealmObject {
     private float amount;
     private String currency;
 

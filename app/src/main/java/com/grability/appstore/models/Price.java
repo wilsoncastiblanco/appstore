@@ -5,11 +5,11 @@ import io.realm.RealmObject;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationPrice{
+public class Price {
     private final float amount;
     private final String currency;
 
-    public ApplicationPrice(float amount, String currency) {
+    public Price(float amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }

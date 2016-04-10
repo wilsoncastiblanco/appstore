@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import io.realm.RealmObject;
-
 /**
  * Created by wilson on 7/04/16.
  */
@@ -13,22 +11,22 @@ public class ApplicationEntry {
     @SerializedName("im:name")
     private final GenericParameters name;
     @SerializedName("im:image")
-    private final List<GenericParameters<ApplicationImages>> imagesList;
+    private final List<GenericParameters<Images>> imagesList;
     private final GenericParameters summary;
     @SerializedName("im:price")
-    private final GenericParameters<ApplicationPrice> price;
+    private final GenericParameters<Price> price;
     @SerializedName("im:contentType")
     private final GenericParameters rights;
     private final GenericParameters title;
     private final GenericParameters<ApplicationLink> link;
     private final GenericParameters<ApplicationId> id;
     @SerializedName("im:artist")
-    private final GenericParameters<ApplicationArtist> artist;
+    private final GenericParameters<Artist> artist;
     private final GenericParameters<Category> category;
     @SerializedName("im:releaseDate")
     private final GenericParameters<ApplicationRelease> releaseDate;
 
-    public ApplicationEntry(GenericParameters<ApplicationArtist> artist, GenericParameters name, List<GenericParameters<ApplicationImages>> imagesList, GenericParameters summary, GenericParameters<ApplicationPrice> price, GenericParameters rights, GenericParameters title, GenericParameters<ApplicationLink> link, GenericParameters<ApplicationId> id, GenericParameters<Category> category, GenericParameters<ApplicationRelease> releaseDate) {
+    public ApplicationEntry(GenericParameters<Artist> artist, GenericParameters name, List<GenericParameters<Images>> imagesList, GenericParameters summary, GenericParameters<Price> price, GenericParameters rights, GenericParameters title, GenericParameters<ApplicationLink> link, GenericParameters<ApplicationId> id, GenericParameters<Category> category, GenericParameters<ApplicationRelease> releaseDate) {
         this.artist = artist;
         this.name = name;
         this.imagesList = imagesList;
@@ -42,7 +40,7 @@ public class ApplicationEntry {
         this.releaseDate = releaseDate;
     }
 
-    public GenericParameters<ApplicationArtist> getArtist() {
+    public GenericParameters<Artist> getArtist() {
         return artist;
     }
 
@@ -54,7 +52,7 @@ public class ApplicationEntry {
         return id;
     }
 
-    public List<GenericParameters<ApplicationImages>> getImagesList() {
+    public List<GenericParameters<Images>> getImagesList() {
         return imagesList;
     }
 
@@ -66,7 +64,7 @@ public class ApplicationEntry {
         return name;
     }
 
-    public GenericParameters<ApplicationPrice> getPrice() {
+    public GenericParameters<Price> getPrice() {
         return price;
     }
 

@@ -7,7 +7,7 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by wilson on 7/04/16.
  */
-public class CategoryRealm extends RealmObject {
+public class RealmCategory extends RealmObject {
     @PrimaryKey
     private String id;
     private String term;

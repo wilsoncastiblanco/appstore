@@ -6,7 +6,10 @@ import com.grability.appstore.models.ApplicationEntry;
 
 import java.util.List;
 
-import io.realm.Realm;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by wilson on 8/04/16.
@@ -14,8 +17,7 @@ import io.realm.Realm;
 public class RealmDatabaseHelper {
 
     private static RealmDatabaseHelper instance;
-    private static Realm realmObject;
-    private RealmDataService dataService;
+    private static RealmService dataService;
 
     public static void init(Context context) {
         if (instance == null) {
@@ -25,14 +27,28 @@ public class RealmDatabaseHelper {
     }
 
     public RealmDatabaseHelper(Context context){
-        dataService = new RealmDataService(context.getApplicationContext());
+        dataService = new RealmService(context.getApplicationContext());
     }
 
-    public static boolean addApplicationList(List<ApplicationEntry> applicationEntries){
-        for(ApplicationEntry applicationEntry : applicationEntries){
+    public static Subscription addApplicationList(List<ApplicationEntry> applicationEntries){
+        return dataService.newApplications(applicationEntries).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribeOn(Schedulers.io())
+                .subscribe(
+                        new Action1<List<ApplicationEntry>>() {
+                            @Override
+                            public void call(List<ApplicationEntry> applicationEntries) {
+                                
+                            }
+                        },
+                        new Action1<Throwable>() {
+                            @Override
+                            public void call(Throwable throwable) {
 
-        }
-        return true;
+                            }
+                        }
+
+                );
     }
 
 

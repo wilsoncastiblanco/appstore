@@ -5,7 +5,7 @@ import io.realm.RealmObject;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationImagesRealm extends RealmObject {
+public class RealmImages extends RealmObject {
     private String url;
     private int height;
 

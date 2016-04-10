@@ -8,14 +8,16 @@ import com.grability.appstore.R;
 import com.grability.appstore.base.SvgView;
 import com.grability.appstore.utils.IntentUtil;
 
+import butterknife.Bind;
+
 public class SplashActivity extends Activity {
+    @Bind(R.id.splashLogo)
+    SvgView splashSvgView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        final SvgView stateView = (SvgView) findViewById(R.id.splashLogo);
-        stateView.setSvgResource(R.raw.grability_logo);
+        splashSvgView.setSvgResource(R.raw.grability_logo);
 
         new Handler().postDelayed(new Runnable() {
             public void run() {

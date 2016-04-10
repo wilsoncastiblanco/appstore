@@ -25,12 +25,7 @@ public class ApplicationsInteractor {
         call.enqueue(new Callback<List<ApplicationEntry>>() {
             @Override
             public void onResponse(Call<List<ApplicationEntry>> call, Response<List<ApplicationEntry>> response) {
-                boolean responseRealm = RealmDatabaseHelper.addApplicationList(response.body());
-                if(responseRealm){
-                    listener.OnRequestSuccess();
-                }else {
-                    listener.OnRequestFailed();
-                }
+                listener.OnRequestSuccess(response.body());
             }
 
             @Override
