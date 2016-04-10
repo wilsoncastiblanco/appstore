@@ -17,7 +17,6 @@
 package com.grability.appstore.base;
 
 import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -33,7 +32,7 @@ import java.util.List;
 
 @SuppressWarnings("ForLoopReplaceableByForEach")
 public class SvgView extends View {
-    private static final String LOG_TAG = "StateView";
+    private static final String LOG_TAG = "SvgView";
 
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -41,7 +40,7 @@ public class SvgView extends View {
     private int mSvgResource;
 
     private final Object mSvgLock = new Object();
-    private List<SvgHelper.SvgPath> mPaths = new ArrayList<SvgHelper.SvgPath>(0);
+    private List<SvgHelper.SvgPath> mPaths = new ArrayList<>(0);
     private Thread mLoader;
 
     private float mPhase;
@@ -49,6 +48,7 @@ public class SvgView extends View {
     private int mDuration;
     private float mParallax = 1.0f;
     private float mOffsetY;
+    private boolean mRepeat;
 
     private ObjectAnimator mSvgAnimator;
 
@@ -61,17 +61,20 @@ public class SvgView extends View {
 
         mPaint.setStyle(Paint.Style.STROKE);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.IntroView, defStyle, 0);
+        TypedArray svgProperties = context.obtainStyledAttributes(attrs, R.styleable.SvgStyleable, defStyle, 0);
         try {
-            if (a != null) {
-                mPaint.setStrokeWidth(a.getFloat(R.styleable.SvgView_strokeWidth, 1.0f));
-                mPaint.setColor(a.getColor(R.styleable.SvgView_strokeColor, 0xff000000));
-                mPhase = a.getFloat(R.styleable.SvgView_phase, 1.0f);
-                mDuration = a.getInt(R.styleable.SvgView_duration, 4000);
-                mFadeFactor = a.getFloat(R.styleable.SvgView_fadeFactor, 10.0f);
+            if (svgProperties != null) {
+                mPaint.setStrokeWidth(svgProperties.getFloat(R.styleable.SvgStyleable_strokeWidth, 1.0f));
+                mPaint.setColor(svgProperties.getColor(R.styleable.SvgStyleable_strokeColor, 0xff000000));
+                mPhase = svgProperties.getFloat(R.styleable.SvgStyleable_phase, 1.0f);
+                mDuration = svgProperties.getInt(R.styleable.SvgStyleable_duration, 4000);
+                mFadeFactor = svgProperties.getFloat(R.styleable.SvgStyleable_fadeFactor, 10.0f);
+                mRepeat = svgProperties.getBoolean(R.styleable.SvgStyleable_repeat, false);
             }
         } finally {
-            if (a != null) a.recycle();
+            if (svgProperties != null){
+                svgProperties.recycle();
+            }
         }
 
         init();
@@ -91,11 +94,11 @@ public class SvgView extends View {
         // Note that PathDashPathEffects can lead to clipping issues with hardware rendering.
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
-
-
         mSvgAnimator = ObjectAnimator.ofFloat(this, "phase", 0.0f, 1.0f);
-        mSvgAnimator.setRepeatCount(ObjectAnimator.INFINITE);
-        mSvgAnimator.setRepeatMode(ObjectAnimator.RESTART);
+        if(mRepeat){
+            mSvgAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+            mSvgAnimator.setRepeatMode(ObjectAnimator.RESTART);
+        }
         mSvgAnimator.setDuration(mDuration);
         mSvgAnimator.start();
     }

@@ -49,7 +49,7 @@ public class LoaderActivity extends Activity implements IApplicationsView{
             public void run() {
                 presenter.loadApplicationsList();
             }
-        }, 4000);
+        }, 7000);
     }
 
     @Override
