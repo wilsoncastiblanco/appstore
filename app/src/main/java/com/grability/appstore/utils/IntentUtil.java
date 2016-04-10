@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.modules.apps.AppsActivity;
+import com.grability.appstore.modules.apps.detail.AppDetailActivity;
 import com.grability.appstore.modules.categories.CategoriesActivity;
 import com.grability.appstore.modules.loader.LoaderActivity;
 
@@ -29,6 +33,12 @@ public class IntentUtil {
   public static void startAppsActivity(Activity activity, String categoryId){
     Intent intent = new Intent(activity, AppsActivity.class);
     intent.putExtra(KEY_DATA, categoryId);
+    activity.startActivity(intent);
+  }
+
+  public static void startAppDetailActivity(Activity activity, ApplicationEntry applicationEntry){
+    Intent intent = new Intent(activity, AppDetailActivity.class);
+    intent.putExtra(KEY_DATA, new Gson().toJson(applicationEntry));
     activity.startActivity(intent);
   }
 

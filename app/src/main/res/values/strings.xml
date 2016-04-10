@@ -8,4 +8,5 @@
     <string name="title_activity_apps">AppsActivity</string>
     <string name="message.error.categories">There was an error loading categories</string>
     <string name="message.error.apps">There was an error loading apps</string>
+    <string name="title_activity_app_detail">AppDetailActivity</string>
 </resources>

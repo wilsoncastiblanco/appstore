@@ -86,6 +86,6 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
 
     @Override
     public void onItemClickListener(View view, ApplicationEntry applicationEntry) {
-
+        IntentUtil.startAppDetailActivity(getActivity(), applicationEntry);
     }
 }

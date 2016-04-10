@@ -39,6 +39,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.grability.appstore.modules.categories.CategoriesActivity" />
         </activity>
+        <activity
+            android:name=".modules.apps.detail.AppDetailActivity"
+            android:label="@string/title_activity_app_detail"
+            android:parentActivityName=".modules.apps.AppsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.grability.appstore.modules.apps.AppsActivity" />
+        </activity>
     </application>
 
 </manifest>
