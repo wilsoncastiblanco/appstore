@@ -18,6 +18,7 @@ import com.grability.appstore.modules.categories.adapters.CategoriesAdapter;
 import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
 import com.grability.appstore.utils.AppUtil;
+import com.grability.appstore.utils.IntentUtil;
 
 import java.util.List;
 
@@ -44,7 +45,6 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
     private void initPresenter(){
         presenter = new ApplicationsPresenter(getActivity().getApplicationContext(),this);
         presenter.realmSubscribe();
-        presenter.loadApplicationsList();
     }
 
     @Override
@@ -52,6 +52,8 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_apps, container, false);
         ButterKnife.bind(this, rootView);
+        String categoryId = getActivity().getIntent().getStringExtra(IntentUtil.KEY_DATA);
+        presenter.loadApplicationsListByCategory(categoryId);
         return rootView;
     }
 

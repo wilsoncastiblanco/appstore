@@ -51,7 +51,7 @@ public class RealmService implements IRealmService {
             @Override
             public RealmResults<RealmApplicationEntry> call(Realm realm) {
                 return realm.where(RealmApplicationEntry.class).
-                        equalTo("category.id", categoryId).
+                        equalTo(RealmServiceParams.CATEGORY_ID, categoryId).
                         findAll();
             }
         }).map(new Func1<RealmResults<RealmApplicationEntry>, List<ApplicationEntry>>() {

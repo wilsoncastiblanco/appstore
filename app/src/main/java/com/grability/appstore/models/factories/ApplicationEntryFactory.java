@@ -22,7 +22,7 @@ public class ApplicationEntryFactory {
     public static List<ApplicationEntry> getObjectListByRealmList(List<RealmApplicationEntry> realmApplicationEntries){
         List<ApplicationEntry> applicationEntryList = new ArrayList<>(realmApplicationEntries.size());
         for(RealmApplicationEntry realmApplicationEntry : realmApplicationEntries){
-            getObjectByRealmObject(realmApplicationEntry);
+            applicationEntryList.add(getObjectByRealmObject(realmApplicationEntry));
         }
         return applicationEntryList;
     }
