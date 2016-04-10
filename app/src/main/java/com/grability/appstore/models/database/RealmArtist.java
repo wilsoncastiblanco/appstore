@@ -1,11 +1,13 @@
 package com.grability.appstore.models.database;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by wilson on 7/04/16.
  */
 public class RealmArtist extends RealmObject {
+    @PrimaryKey
     private String artistName;
     private String artistUrl;
 

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.grability.appstore.api.RESTConstants;
-import com.grability.appstore.models.database.dataServices.RealmDatabaseHelper;
 import com.grability.appstore.utils.preferences.PreferenceUtil;
 
 
@@ -17,7 +16,6 @@ public class App extends Application{
     super.onCreate();
     PreferenceUtil.init(this);
     RESTConstants.init();
-    RealmDatabaseHelper.init(getApplicationContext());
   }
 
   @Override

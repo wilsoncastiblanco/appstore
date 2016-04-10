@@ -1,6 +1,14 @@
 package com.grability.appstore.models;
 
 import com.google.gson.annotations.SerializedName;
+import com.grability.appstore.models.ApplicationId;
+import com.grability.appstore.models.ApplicationLink;
+import com.grability.appstore.models.ApplicationRelease;
+import com.grability.appstore.models.Artist;
+import com.grability.appstore.models.Category;
+import com.grability.appstore.models.GenericParameters;
+import com.grability.appstore.models.Images;
+import com.grability.appstore.models.Price;
 
 import java.util.List;
 

@@ -2,6 +2,8 @@ package com.grability.appstore.modules.loader;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 
 import com.grability.appstore.R;
 import com.grability.appstore.base.SvgView;
@@ -21,10 +23,29 @@ public class LoaderActivity extends Activity implements IApplicationsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader);
         ButterKnife.bind(this);
-        loaderSvgView.setSvgResource(R.raw.appstore);
 
-        presenter = new ApplicationsPresenter(this);
-        presenter.loadApplicationsList();
+        initView();
+        initPresenter();
+        initHandler();
+    }
+
+    private void initView(){
+        loaderSvgView.setSvgResource(R.raw.appstore);
+    }
+
+    private void initPresenter(){
+        presenter = new ApplicationsPresenter(getApplicationContext(),this);
+    }
+
+    /**
+     * This function was created intentionally just for showing loading animation when loading
+     * */
+    private void initHandler(){
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                presenter.loadApplicationsList();
+            }
+        }, 4000);
     }
 
     @Override
@@ -34,7 +55,7 @@ public class LoaderActivity extends Activity implements IApplicationsView{
 
     @Override
     public void OnApplicationsListFailed() {
-
+        Snackbar.make(loaderSvgView, R.string.message_error_loader, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

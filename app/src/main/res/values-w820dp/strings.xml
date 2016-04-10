@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="message.loading">Loading awesomeness ...</string>
+    <string name="message.error.loader">There was an error loading data</string>
 </resources>

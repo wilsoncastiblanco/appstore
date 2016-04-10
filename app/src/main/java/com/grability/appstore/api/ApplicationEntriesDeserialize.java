@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by wilson on 7/04/16.
  */
-public class ApplicationEntriesDeserialize implements JsonDeserializer<String> {
+public class ApplicationEntriesDeserialize implements JsonDeserializer<List<ApplicationEntry>> {
     @Override
-    public String deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jdc)
+    public List<ApplicationEntry> deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jdc)
             throws JsonParseException
     {
         JsonElement content = jsonElement.getAsJsonObject().get(RESTConstants.FEED_OBJECT).getAsJsonObject().get(RESTConstants.ENTRY_ARRAY);

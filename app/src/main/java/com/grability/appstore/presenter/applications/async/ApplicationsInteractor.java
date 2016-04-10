@@ -2,7 +2,6 @@ package com.grability.appstore.presenter.applications.async;
 
 import com.grability.appstore.api.RESTConstants;
 import com.grability.appstore.models.ApplicationEntry;
-import com.grability.appstore.models.database.dataServices.RealmDatabaseHelper;
 
 import java.util.List;
 

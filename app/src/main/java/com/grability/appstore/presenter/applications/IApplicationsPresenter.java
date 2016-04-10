@@ -5,6 +5,4 @@ package com.grability.appstore.presenter.applications;
  */
 public interface IApplicationsPresenter {
     void loadApplicationsList();
-    void realmSubscribe();
-    void realmUnsubscribe();
 }

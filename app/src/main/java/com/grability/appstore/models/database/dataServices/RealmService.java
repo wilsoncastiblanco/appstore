@@ -2,11 +2,14 @@ package com.grability.appstore.models.database.dataServices;
 
 import android.content.Context;
 
-import com.grability.appstore.models.ApplicationEntryFactory;
+import com.grability.appstore.models.factories.ApplicationEntryFactory;
 import com.grability.appstore.models.ApplicationEntry;
+import com.grability.appstore.models.Category;
 import com.grability.appstore.models.database.RealmApplicationEntryFactory;
 import com.grability.appstore.models.database.RealmApplicationEntry;
+import com.grability.appstore.models.database.RealmCategory;
 import com.grability.appstore.models.database.observables.RealmObservable;
+import com.grability.appstore.models.factories.CategoryFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +60,25 @@ public class RealmService implements IRealmService {
         }).map(new Func1<List<RealmApplicationEntry>, List<ApplicationEntry>>() {
             @Override
             public List<ApplicationEntry> call(List<RealmApplicationEntry> realmApplicationEntries) {
-                return ApplicationEntryFactory.getObjectByRealmList(realmApplicationEntries);
+                return ApplicationEntryFactory.getObjectListByRealmList(realmApplicationEntries);
             }
         });
     }
+
+    @Override
+    public Observable<List<Category>> categories() {
+        return RealmObservable.results(context, new Func1<Realm, RealmResults<RealmCategory>>() {
+            @Override
+            public RealmResults<RealmCategory> call(Realm realm) {
+                return realm.where(RealmCategory.class).findAll();
+            }
+        }).map(new Func1<RealmResults<RealmCategory>, List<Category>>() {
+            @Override
+            public List<Category> call(RealmResults<RealmCategory> realmCategories) {
+                return CategoryFactory.getObjectListByRealmList(realmCategories);
+            }
+        });
+    }
+
+
 }

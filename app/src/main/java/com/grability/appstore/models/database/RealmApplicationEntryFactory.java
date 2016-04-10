@@ -55,9 +55,9 @@ public class RealmApplicationEntryFactory {
             imagesApplication.add(realm.copyToRealm(imagesRealm));
         }
 
-        RealmArtist artistApplication = realm.copyToRealm(artistApplicationRealm);
+        RealmArtist artistApplication = realm.copyToRealmOrUpdate(artistApplicationRealm);
         RealmPrice priceApplication = realm.copyToRealm(priceApplicationRealm);
-        RealmCategory categoryApplication = realm.copyToRealm(categoryRealm);
+        RealmCategory categoryApplication = realm.copyToRealmOrUpdate(categoryRealm);
 
 
         // create RealmIssue instance and save it
@@ -74,7 +74,7 @@ public class RealmApplicationEntryFactory {
         realmApplicationEntry.setSummary(applicationEntry.getSummary().getLabel());
         realmApplicationEntry.setTitle(applicationEntry.getTitle().getLabel());
 
-        return realm.copyToRealm(realmApplicationEntry);
+        return realm.copyToRealmOrUpdate(realmApplicationEntry);
     }
 
 }

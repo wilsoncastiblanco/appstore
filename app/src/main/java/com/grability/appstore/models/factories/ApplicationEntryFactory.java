@@ -1,5 +1,14 @@
-package com.grability.appstore.models;
+package com.grability.appstore.models.factories;
 
+import com.grability.appstore.models.ApplicationEntry;
+import com.grability.appstore.models.ApplicationId;
+import com.grability.appstore.models.ApplicationLink;
+import com.grability.appstore.models.ApplicationRelease;
+import com.grability.appstore.models.Artist;
+import com.grability.appstore.models.Category;
+import com.grability.appstore.models.GenericParameters;
+import com.grability.appstore.models.Images;
+import com.grability.appstore.models.Price;
 import com.grability.appstore.models.database.RealmApplicationEntry;
 import com.grability.appstore.models.database.RealmImages;
 
@@ -10,7 +19,7 @@ import java.util.List;
  * Created by wilson on 10/04/16.
  */
 public class ApplicationEntryFactory {
-    public static List<ApplicationEntry> getObjectByRealmList(List<RealmApplicationEntry> realmApplicationEntries){
+    public static List<ApplicationEntry> getObjectListByRealmList(List<RealmApplicationEntry> realmApplicationEntries){
         List<ApplicationEntry> applicationEntryList = new ArrayList<>(realmApplicationEntries.size());
         for(RealmApplicationEntry realmApplicationEntry : realmApplicationEntries){
             getObjectByRealmObject(realmApplicationEntry);
