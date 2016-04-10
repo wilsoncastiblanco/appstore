@@ -38,7 +38,8 @@ public class LoaderActivity extends Activity implements IApplicationsView{
     }
 
     /**
-     * This function was created intentionally just for showing loading animation when loading
+     * This function was created intentionally just for showing loading animation
+     * It is because data is loading after to show the animation
      * */
     private void initHandler(){
         new Handler().postDelayed(new Runnable() {
