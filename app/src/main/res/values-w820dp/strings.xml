@@ -2,4 +2,5 @@
 <resources>
     <string name="message.loading">Loading awesomeness ...</string>
     <string name="message.error.loader">There was an error loading data</string>
+    <string name="message.error.apps">There was an error loading apps</string>
 </resources>

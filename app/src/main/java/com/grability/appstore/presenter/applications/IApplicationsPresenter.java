@@ -5,4 +5,5 @@ package com.grability.appstore.presenter.applications;
  */
 public interface IApplicationsPresenter {
     void loadApplicationsList();
+    void loadApplicationsListByCategory(String categoryId);
 }

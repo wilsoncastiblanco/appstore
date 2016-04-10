@@ -14,4 +14,5 @@ public interface IRealmService {
     Observable<List<ApplicationEntry>> applications();
     Observable<List<ApplicationEntry>> newApplications(List<ApplicationEntry> applicationEntries);
     Observable<List<Category>> categories();
+    Observable<List<ApplicationEntry>> applicationsByCategory(String categoryId);
 }

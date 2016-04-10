@@ -7,9 +7,12 @@ import android.support.design.widget.Snackbar;
 
 import com.grability.appstore.R;
 import com.grability.appstore.base.SvgView;
+import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
 import com.grability.appstore.utils.IntentUtil;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,7 +53,7 @@ public class LoaderActivity extends Activity implements IApplicationsView{
     }
 
     @Override
-    public void OnApplicationsListLoaded() {
+    public void OnApplicationsListLoaded(List<ApplicationEntry> applicationEntryList) {
         IntentUtil.startCategoriesActivity(this);
     }
 

@@ -5,4 +5,7 @@
     <string name="title_activity_loader">LoaderActivity</string>
     <string name="message.loading">Loading awesomeness ...</string>
     <string name="message.error.loader">There was an error loading data</string>
+    <string name="title_activity_apps">AppsActivity</string>
+    <string name="message.error.categories">There was an error loading categories</string>
+    <string name="message.error.apps">There was an error loading apps</string>
 </resources>

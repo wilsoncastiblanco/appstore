@@ -38,6 +38,11 @@ public class ApplicationsPresenter implements IApplicationsPresenter, IApplicati
     }
 
     @Override
+    public void loadApplicationsListByCategory(String categoryId) {
+        compositeSubscription.add(subscriptionApplicationEntriesByCategory(categoryId));
+    }
+
+    @Override
     public void realmSubscribe() {
         compositeSubscription = new CompositeSubscription();
     }
@@ -65,7 +70,7 @@ public class ApplicationsPresenter implements IApplicationsPresenter, IApplicati
                         new Action1<List<ApplicationEntry>>() {
                             @Override
                             public void call(List<ApplicationEntry> applicationEntries) {
-                                listener.OnApplicationsListLoaded();
+                                listener.OnApplicationsListLoaded(applicationEntries);
                             }
                         },
                         new Action1<Throwable>() {
@@ -75,6 +80,26 @@ public class ApplicationsPresenter implements IApplicationsPresenter, IApplicati
                             }
                         }
 
+                );
+    }
+
+    private Subscription subscriptionApplicationEntriesByCategory(String categoryId){
+        return realmService.applicationsByCategory(categoryId).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribeOn(Schedulers.io()).
+                subscribe(
+                        new Action1<List<ApplicationEntry>>() {
+                            @Override
+                            public void call(List<ApplicationEntry> applicationEntries) {
+                                listener.OnApplicationsListLoaded(applicationEntries);
+                            }
+                        },
+                        new Action1<Throwable>() {
+                            @Override
+                            public void call(Throwable throwable) {
+                                listener.OnApplicationsListFailed();
+                            }
+                        }
                 );
     }
 }

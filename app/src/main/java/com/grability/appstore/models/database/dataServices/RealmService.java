@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 import rx.Observable;
 import rx.functions.Func1;
@@ -34,18 +35,29 @@ public class RealmService implements IRealmService {
         return RealmObservable.results(context, new Func1<Realm, RealmResults<RealmApplicationEntry>>() {
             @Override
             public RealmResults<RealmApplicationEntry> call(Realm realm) {
-                // find all issues
                 return realm.where(RealmApplicationEntry.class).findAll();
             }
         }).map(new Func1<RealmResults<RealmApplicationEntry>, List<ApplicationEntry>>() {
             @Override
-            public List<ApplicationEntry> call(RealmResults<RealmApplicationEntry> realmIssues) {
-                // map them to UI objects
-                final List<ApplicationEntry> issues = new ArrayList<>(realmIssues.size());
-                for (RealmApplicationEntry realmApplicationEntry : realmIssues) {
-                    issues.add(ApplicationEntryFactory.getObjectByRealmObject(realmApplicationEntry));
-                }
-                return issues;
+            public List<ApplicationEntry> call(RealmResults<RealmApplicationEntry> realmApplicationEntries) {
+                return ApplicationEntryFactory.getObjectListByRealmList(realmApplicationEntries);
+            }
+        });
+    }
+
+    @Override
+    public Observable<List<ApplicationEntry>> applicationsByCategory(final String categoryId) {
+        return RealmObservable.results(context, new Func1<Realm, RealmResults<RealmApplicationEntry>>() {
+            @Override
+            public RealmResults<RealmApplicationEntry> call(Realm realm) {
+                return realm.where(RealmApplicationEntry.class).
+                        equalTo("category.id", categoryId).
+                        findAll();
+            }
+        }).map(new Func1<RealmResults<RealmApplicationEntry>, List<ApplicationEntry>>() {
+            @Override
+            public List<ApplicationEntry> call(RealmResults<RealmApplicationEntry> realmApplicationEntries) {
+                return ApplicationEntryFactory.getObjectListByRealmList(realmApplicationEntries);
             }
         });
     }
@@ -79,6 +91,8 @@ public class RealmService implements IRealmService {
             }
         });
     }
+
+
 
 
 }
