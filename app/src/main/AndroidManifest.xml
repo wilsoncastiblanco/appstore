@@ -25,6 +25,7 @@
         <activity
             android:name=".modules.categories.CategoriesActivity"
             android:label="@string/title.activity_categories"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".modules.loader.LoaderActivity"
