@@ -17,4 +17,7 @@
     <!-- Applications detail -->
     <string name="application.detail.link"><a href="$1%s">Artist site</a></string>
     <string name="message.error.internet">Verify your internet connection</string>
+    <string name="message.error.no_internet">No internet connection</string>
+    <string name="message.success.internet_connection">Internet connection established</string>
+    <string name="message.error.no_categories">There are no categories, please try again</string>
 </resources>

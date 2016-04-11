@@ -4,24 +4,19 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.io.IOException;
+
 public class NetworkUtil {
 
-  public static boolean isOnline(Context context) {
+  public static boolean isOnline() {
+    Runtime runtime = Runtime.getRuntime();
     try {
-      ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-      if (connectivity != null) {
-        NetworkInfo[] info = connectivity.getAllNetworkInfo();
-        if (info != null)
-          for (int i = 0; i < info.length; i++)
-            if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-              return true;
-            }
-
-      }
-    } catch (Exception e) {
-      return false;
+      Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+      int     exitValue = ipProcess.waitFor();
+      return (exitValue == 0);
+    } catch (IOException | InterruptedException e){
+      e.printStackTrace();
     }
-
     return false;
   }
 }

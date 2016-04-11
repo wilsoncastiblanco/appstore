@@ -3,7 +3,6 @@ package com.grability.appstore.modules.categories;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.grability.appstore.R;
 import com.grability.appstore.models.Category;
@@ -34,6 +34,9 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
     RecyclerView recyclerViewCategories;
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
+    @Bind(R.id.textViewNoCategories)
+    TextView textViewNoCategories;
+
     private CategoriesPresenter presenter;
 
     @Override
@@ -59,14 +62,18 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
     @Override
     public void OnCategoriesListLoaded(List<Category> categoryList) {
         if(getActivity() != null){
-            recyclerViewCategories.setHasFixedSize(true);
-            CategoriesAdapter adapter = new CategoriesAdapter(getActivity().getApplicationContext(),categoryList);
-            configureLayoutManager();
-            recyclerViewCategories.setAdapter(adapter);
-            recyclerViewCategories.setItemAnimator(new SlideInUpAnimator());
-            AppUtil.hideGoneViews(progressBar);
-            adapter.setOnItemClickListener(this);
+            setUpRecyclerView(categoryList);
         }
+    }
+
+    private void setUpRecyclerView(List<Category> categoryList){
+        recyclerViewCategories.setHasFixedSize(true);
+        CategoriesAdapter adapter = new CategoriesAdapter(getActivity().getApplicationContext(), categoryList);
+        configureLayoutManager();
+        recyclerViewCategories.setAdapter(adapter);
+        recyclerViewCategories.setItemAnimator(new SlideInUpAnimator());
+        AppUtil.hideGoneViews(progressBar);
+        adapter.setOnItemClickListener(this);
     }
 
     private void configureLayoutManager(){
@@ -77,12 +84,18 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
             GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
             recyclerViewCategories.setLayoutManager(mLayoutManager);
         }
-
     }
 
     @Override
     public void OnCategoriesListFailed() {
+        AppUtil.hideGoneViews(progressBar);
         Snackbar.make(recyclerViewCategories, R.string.message_error_categories, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void OnCategoriesEmpty() {
+        AppUtil.hideGoneViews(progressBar);
+        AppUtil.showViews(textViewNoCategories);
     }
 
     @Override

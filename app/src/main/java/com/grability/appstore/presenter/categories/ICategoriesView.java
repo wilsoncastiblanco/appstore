@@ -10,4 +10,5 @@ import java.util.List;
 public interface ICategoriesView {
     void OnCategoriesListLoaded(List<Category> list);
     void OnCategoriesListFailed();
+    void OnCategoriesEmpty();
 }

@@ -50,6 +50,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.grability.appstore.modules.apps.AppsActivity" />
         </activity>
+        <receiver android:name=".receivers.NetworkChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

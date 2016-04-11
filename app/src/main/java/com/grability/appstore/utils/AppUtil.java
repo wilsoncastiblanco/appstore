@@ -68,14 +68,6 @@ public class AppUtil {
     java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
     return s.hasNext() ? s.next() : "";
   }
-
-  public static boolean checkNetworkAndShowDialogIfOffline(Activity context) {
-    boolean online = NetworkUtil.isOnline(context);
-    if (online == false) {
-      //FragmentUtil.showOfflineDialog(context, DialogStyle.BLUE);
-    }
-    return online;
-  }
   
   public static void hideSoftKeyboard(View v) {
     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);

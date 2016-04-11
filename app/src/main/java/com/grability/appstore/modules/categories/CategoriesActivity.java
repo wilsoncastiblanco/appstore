@@ -1,13 +1,12 @@
 package com.grability.appstore.modules.categories;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.grability.appstore.R;
+import com.grability.appstore.receivers.NetworkChangeReceiver;
 import com.grability.appstore.utils.AppUtil;
-import com.grability.appstore.utils.IntentUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,4 +28,9 @@ public class CategoriesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        NetworkChangeReceiver.disableNetWorkReceiver(this);
+    }
 }

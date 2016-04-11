@@ -11,6 +11,7 @@ import com.grability.appstore.base.SvgView;
 import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
+import com.grability.appstore.receivers.NetworkChangeReceiver;
 import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
 import com.grability.appstore.utils.NetworkUtil;
@@ -51,10 +52,9 @@ public class LoaderActivity extends Activity implements IApplicationsView{
     private void initHandler(){
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                if(NetworkUtil.isOnline(getApplicationContext())){
+                if(NetworkUtil.isOnline()){
                     presenter.loadApplicationsList();
                 }else{
-                    Snackbar.make(loaderSvgView, R.string.message_error_internet, Snackbar.LENGTH_LONG).show();
                     OnApplicationsListLoaded(new ArrayList<ApplicationEntry>());
                 }
             }
@@ -75,6 +75,7 @@ public class LoaderActivity extends Activity implements IApplicationsView{
     protected void onStart() {
         super.onStart();
         presenter.realmSubscribe();
+        NetworkChangeReceiver.enableNetworkReceiver(this);
     }
 
     @Override

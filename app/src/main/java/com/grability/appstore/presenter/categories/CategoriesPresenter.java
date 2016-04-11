@@ -42,7 +42,11 @@ public class CategoriesPresenter implements ICategoriesPresenter, IRealmPresente
                         new Action1<List<Category>>() {
                             @Override
                             public void call(List<Category> categories) {
-                                view.OnCategoriesListLoaded(categories);
+                                if(categories.size() > 0){
+                                    view.OnCategoriesListLoaded(categories);
+                                }else{
+                                    view.OnCategoriesEmpty();
+                                }
                             }
                         },
                         new Action1<Throwable>() {

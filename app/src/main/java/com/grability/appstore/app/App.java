@@ -10,6 +10,10 @@ import com.grability.appstore.utils.preferences.PreferenceUtil;
 
 
 public class App extends Application{
+  @Override
+  public void onTerminate() {
+    super.onTerminate();
+  }
 
   @Override
   public void onCreate() {
@@ -23,4 +27,6 @@ public class App extends Application{
     super.attachBaseContext(base);
     MultiDex.install(this);
   }
+
+
 }

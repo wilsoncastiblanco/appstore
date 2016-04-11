@@ -17,6 +17,18 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+    <TextView
+        android:id="@+id/textViewNoCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@android:drawable/ic_menu_info_details"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/message.error.no_categories"
+        android:textColor="@color/primary_text"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="80dp"
