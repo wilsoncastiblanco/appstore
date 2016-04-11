@@ -86,11 +86,9 @@ public class AppDetailActivityFragment extends Fragment {
         textViewReleaseDate.setText(applicationEntry.getReleaseDate().getAttributes().getLabel());
 
         String text = String.format(getString(R.string.application_detail_link),applicationEntry.getLink().getAttributes().getHref() );
-        textViewLink.setMovementMethod(LinkMovementMethod.getInstance());
         textViewLink.setAutoLinkMask(Linkify.WEB_URLS);
-        textViewLink.setLinksClickable(true);
-        textViewLink.setText(Html.fromHtml(text));
-
+        textViewLink.setText(applicationEntry.getLink().getAttributes().getHref());
+        textViewLink.setMovementMethod(LinkMovementMethod.getInstance());
 
         textViewArtistRights.setText(applicationEntry.getArtist().getLabel());
     }
