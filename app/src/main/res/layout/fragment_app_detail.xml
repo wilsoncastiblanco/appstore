@@ -10,18 +10,12 @@
     tools:context="com.grability.appstore.modules.apps.detail.AppDetailActivityFragment"
     tools:showIn="@layout/activity_app_detail">
 
-    <TextView
-        android:id="@+id/textViewAppName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/item_apps"/>
 
-    <TextView
-        android:id="@+id/textViewPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/item_categories"/>
 
-    <TextView
-        android:id="@+id/textViewArtist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/item_summary"/>
+
+    <include layout="@layout/item_rights"/>
+
 </LinearLayout>

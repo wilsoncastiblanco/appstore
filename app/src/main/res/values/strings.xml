@@ -10,5 +10,10 @@
     <string name="message.error.loader">There was an error loading data</string>
     <string name="message.error.categories">There was an error loading categories</string>
     <string name="message.error.apps">There was an error loading apps</string>
+
+    <!-- Content description-->
     <string name="content_description.application.icon">Application Icon</string>
+
+    <!-- Applications detail -->
+    <string name="application.detail.link"><a href="$1%s">Artist site</a></string>
 </resources>

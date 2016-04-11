@@ -25,7 +25,6 @@ public class ApplicationEntry {
     private final GenericParameters summary;
     @SerializedName("im:price")
     private final GenericParameters<Price> price;
-    @SerializedName("im:contentType")
     private final GenericParameters rights;
     private final GenericParameters title;
     private final GenericParameters<ApplicationLink> link;
