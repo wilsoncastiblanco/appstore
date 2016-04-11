@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppStore</string>
+    <string name="app_name">App Store</string>
     <!--Titles-->
     <string name="title.activity_categories">Categories</string>
     <string name="title.activity_apps">Apps</string>

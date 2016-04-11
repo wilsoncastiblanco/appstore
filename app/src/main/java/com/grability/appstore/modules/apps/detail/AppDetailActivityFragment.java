@@ -44,7 +44,6 @@ public class AppDetailActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_app_detail, container, false);
         ButterKnife.bind(this, rootView);
-
         initView();
         return rootView;
     }
