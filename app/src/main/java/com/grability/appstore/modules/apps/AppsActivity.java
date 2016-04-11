@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import com.grability.appstore.R;
+import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
 
 import butterknife.Bind;
@@ -19,14 +20,8 @@ public class AppsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apps);
         ButterKnife.bind(this);
-        validateScreenOrientation();
+        AppUtil.validateScreenOrientation(this);
         initView();
-    }
-
-    private void validateScreenOrientation() {
-        if(getResources().getBoolean(R.bool.portrait_only)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
     }
 
     private void initView(){

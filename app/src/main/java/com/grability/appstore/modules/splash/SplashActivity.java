@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.grability.appstore.R;
 import com.grability.appstore.base.SvgView;
+import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
 
 import butterknife.Bind;
@@ -20,15 +21,9 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+        AppUtil.validateScreenOrientation(this);
         initView();
         initHandler();
-        validateScreenOrientation();
-    }
-
-    private void validateScreenOrientation() {
-        if(getResources().getBoolean(R.bool.portrait_only)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
     }
 
     private void initView(){

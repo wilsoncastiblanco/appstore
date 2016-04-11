@@ -11,6 +11,7 @@ import com.grability.appstore.base.SvgView;
 import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
+import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
 
 import java.util.List;
@@ -27,16 +28,10 @@ public class LoaderActivity extends Activity implements IApplicationsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader);
         ButterKnife.bind(this);
-        validateScreenOrientation();
+        AppUtil.validateScreenOrientation(this);
         initView();
         initPresenter();
         initHandler();
-    }
-
-    private void validateScreenOrientation() {
-        if(getResources().getBoolean(R.bool.portrait_only)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
     }
 
     private void initView(){

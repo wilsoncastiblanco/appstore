@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -13,6 +14,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
+
+import com.grability.appstore.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -133,6 +136,14 @@ public class AppUtil {
   
   public static boolean isValidEmail(CharSequence target) {
     return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches();
+  }
+
+  public static void validateScreenOrientation(Activity activity) {
+    if(activity.getApplicationContext().getResources().getBoolean(R.bool.portrait_only)){
+      activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }else{
+      activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
   }
 
 }
