@@ -61,7 +61,12 @@ public class AppDetailActivityFragment extends Fragment {
     }
 
     private void loadApplicationEntryObject(){
-        String applicationEntryString = getActivity().getIntent().getStringExtra(IntentUtil.KEY_DATA);
+        String applicationEntryString;
+        if(getArguments() != null){
+            applicationEntryString = getArguments().getString(IntentUtil.KEY_DATA);
+        }else{
+            applicationEntryString = getActivity().getIntent().getStringExtra(IntentUtil.KEY_DATA);
+        }
         applicationEntry = new Gson().fromJson(applicationEntryString, ApplicationEntry.class);
     }
 
