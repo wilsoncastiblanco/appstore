@@ -13,12 +13,15 @@ import android.widget.ProgressBar;
 
 import com.grability.appstore.R;
 import com.grability.appstore.models.ApplicationEntry;
+import com.grability.appstore.models.events.ApplicationEntryEvent;
 import com.grability.appstore.modules.apps.adapters.AppsAdapter;
 import com.grability.appstore.modules.categories.adapters.CategoriesAdapter;
 import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
 import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -70,13 +73,15 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
             recyclerViewApps.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
+            if(getResources().getBoolean(R.bool.dual_pane)){
+                callAppClickListener(applicationEntryList.get(0));
+            }
         }
     }
 
     @Override
     public void OnApplicationsListFailed() {
         Snackbar.make(recyclerViewApps, R.string.message_error_apps, Snackbar.LENGTH_LONG).show();
-
     }
 
     @Override
@@ -87,6 +92,10 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
 
     @Override
     public void onItemClickListener(View view, ApplicationEntry applicationEntry) {
-        IntentUtil.startAppDetailActivity(getActivity(), applicationEntry);
+        callAppClickListener(applicationEntry);
+    }
+
+    private void callAppClickListener(ApplicationEntry applicationEntry){
+        EventBus.getDefault().post(new ApplicationEntryEvent(applicationEntry));
     }
 }

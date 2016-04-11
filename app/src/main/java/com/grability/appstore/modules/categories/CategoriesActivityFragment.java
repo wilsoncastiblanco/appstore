@@ -4,6 +4,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,13 +61,23 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
         if(getActivity() != null){
             recyclerViewCategories.setHasFixedSize(true);
             CategoriesAdapter adapter = new CategoriesAdapter(getActivity().getApplicationContext(),categoryList);
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+            configureLayoutManager();
             recyclerViewCategories.setAdapter(adapter);
-            recyclerViewCategories.setLayoutManager(mLayoutManager);
             recyclerViewCategories.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
         }
+    }
+
+    private void configureLayoutManager(){
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewCategories.setLayoutManager(mLayoutManager);
+        }else{
+            GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+            recyclerViewCategories.setLayoutManager(mLayoutManager);
+        }
+
     }
 
     @Override
