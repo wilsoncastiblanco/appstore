@@ -1,5 +1,6 @@
 package com.grability.appstore.modules.apps.detail;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -33,8 +34,15 @@ public class AppDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_detail);
         ButterKnife.bind(this);
+        validateScreenOrientation();
         initData();
         initView();
+    }
+
+    private void validateScreenOrientation() {
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     private void initView() {

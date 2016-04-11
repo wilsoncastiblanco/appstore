@@ -1,6 +1,7 @@
 package com.grability.appstore.modules.loader;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
@@ -26,10 +27,16 @@ public class LoaderActivity extends Activity implements IApplicationsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader);
         ButterKnife.bind(this);
-
+        validateScreenOrientation();
         initView();
         initPresenter();
         initHandler();
+    }
+
+    private void validateScreenOrientation() {
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     private void initView(){

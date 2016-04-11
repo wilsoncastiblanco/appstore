@@ -1,6 +1,7 @@
 package com.grability.appstore.modules.splash;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.os.Bundle;
 
@@ -21,6 +22,13 @@ public class SplashActivity extends Activity {
         ButterKnife.bind(this);
         initView();
         initHandler();
+        validateScreenOrientation();
+    }
+
+    private void validateScreenOrientation() {
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     private void initView(){
