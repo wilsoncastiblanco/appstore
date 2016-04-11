@@ -13,7 +13,9 @@ import com.grability.appstore.presenter.applications.ApplicationsPresenter;
 import com.grability.appstore.presenter.applications.IApplicationsView;
 import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
+import com.grability.appstore.utils.NetworkUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -49,7 +51,11 @@ public class LoaderActivity extends Activity implements IApplicationsView{
     private void initHandler(){
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                presenter.loadApplicationsList();
+                if(NetworkUtil.isOnline(getApplicationContext())){
+                    presenter.loadApplicationsList();
+                }else{
+                    OnApplicationsListLoaded(new ArrayList<ApplicationEntry>());
+                }
             }
         }, 6500);
     }
