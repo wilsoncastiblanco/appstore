@@ -73,6 +73,7 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
             recyclerViewApps.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
+            EventBus.getDefault().post(new ApplicationEntryEvent(applicationEntryList.get(0)));
         }
     }
 

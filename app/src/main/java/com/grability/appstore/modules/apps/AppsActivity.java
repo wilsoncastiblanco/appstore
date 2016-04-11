@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.grability.appstore.R;
-import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.models.events.ApplicationEntryEvent;
 import com.grability.appstore.utils.AppUtil;
 import com.grability.appstore.utils.IntentUtil;
