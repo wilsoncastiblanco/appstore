@@ -54,6 +54,7 @@ public class LoaderActivity extends Activity implements IApplicationsView{
                 if(NetworkUtil.isOnline(getApplicationContext())){
                     presenter.loadApplicationsList();
                 }else{
+                    Snackbar.make(loaderSvgView, R.string.message_error_internet, Snackbar.LENGTH_LONG).show();
                     OnApplicationsListLoaded(new ArrayList<ApplicationEntry>());
                 }
             }

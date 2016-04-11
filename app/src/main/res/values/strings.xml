@@ -16,4 +16,5 @@
 
     <!-- Applications detail -->
     <string name="application.detail.link"><a href="$1%s">Artist site</a></string>
+    <string name="message.error.internet">Verify your internet connection</string>
 </resources>
