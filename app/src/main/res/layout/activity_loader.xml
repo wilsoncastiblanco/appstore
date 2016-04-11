@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_above="@+id/textViewLoading"
         svgview:duration="6000"
         svgview:fadeFactor="10.0"
         svgview:phase="1.0"
@@ -23,6 +24,7 @@
         svgview:strokeWidth="2.0" />
 
     <TextView
+        android:id="@+id/textViewLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

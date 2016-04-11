@@ -44,14 +44,14 @@ public class LoaderActivity extends Activity implements IApplicationsView{
 
     /**
      * This function was created intentionally just for showing loading animation
-     * It is because data is loading after to show the animation
+     * It is because of data is loading before to show the animation
      * */
     private void initHandler(){
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 presenter.loadApplicationsList();
             }
-        }, 5000);
+        }, 6500);
     }
 
     @Override

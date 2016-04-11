@@ -73,7 +73,9 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
             recyclerViewApps.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
-            EventBus.getDefault().post(new ApplicationEntryEvent(applicationEntryList.get(0)));
+            if(getResources().getBoolean(R.bool.dual_pane)){
+                callAppClickListener(applicationEntryList.get(0));
+            }
         }
     }
 
@@ -90,6 +92,10 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
 
     @Override
     public void onItemClickListener(View view, ApplicationEntry applicationEntry) {
+        callAppClickListener(applicationEntry);
+    }
+
+    private void callAppClickListener(ApplicationEntry applicationEntry){
         EventBus.getDefault().post(new ApplicationEntryEvent(applicationEntry));
     }
 }
