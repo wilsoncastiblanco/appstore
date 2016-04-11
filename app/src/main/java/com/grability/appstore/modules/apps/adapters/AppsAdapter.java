@@ -46,7 +46,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppsViewHolder
     public void onBindViewHolder(AppsAdapter.AppsViewHolder holder, int position) {
         final ApplicationEntry applicationEntry = applicationEntryList.get(position);
         String appImageUrl = applicationEntry.getBiggestAppImage(applicationEntry.getImagesList());
-        Picasso.with(context).load(appImageUrl).into(holder.imageViewApp);
+        Picasso.with(context).load(appImageUrl).error(R.drawable.ic_file_cloud_off).into(holder.imageViewApp);
         holder.textViewAppName.setText(applicationEntry.getName().getLabel());
         holder.textViewArtist.setText(applicationEntry.getArtist().getLabel());
         holder.textViewPrice.setText(StringUtil.getInCurrencyFormat(String.valueOf(applicationEntry.getPrice().getAttributes().getAmount()), applicationEntry.getPrice().getAttributes().getCurrency()));

@@ -110,7 +110,7 @@ public class AppDetailActivityFragment extends Fragment {
 
     private void applicationName() {
         String appImageUrl = applicationEntry.getBiggestAppImage(applicationEntry.getImagesList());
-        Picasso.with(getActivity().getApplicationContext()).load(appImageUrl).into(imageViewApp);
+        Picasso.with(getActivity().getApplicationContext()).load(appImageUrl).error(R.drawable.ic_file_cloud_off).into(imageViewApp);
         textViewAppName.setText(applicationEntry.getTitle().getLabel());
         textViewArtist.setText(applicationEntry.getArtist().getLabel());
         textViewPrice.setText(StringUtil.getInCurrencyFormat(String.valueOf(applicationEntry.getPrice().getAttributes().getAmount()), applicationEntry.getPrice().getAttributes().getCurrency()));
