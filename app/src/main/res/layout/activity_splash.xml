@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/primary"
     tools:context=".modules.splash.SplashActivity">
 
     <com.grability.appstore.base.SvgView
@@ -20,5 +21,5 @@
         svgview:repeat="false"
         svgview:fadeFactor="10.0"
         svgview:strokeWidth="2.0"
-        svgview:strokeColor="@color/primary_text"/>
+        svgview:strokeColor="@android:color/white"/>
 </RelativeLayout>

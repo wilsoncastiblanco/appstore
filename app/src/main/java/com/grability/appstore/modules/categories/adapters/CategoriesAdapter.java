@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.grability.appstore.R;
 import com.grability.appstore.models.Category;
+import com.grability.appstore.utils.ViewUtils;
 
 import java.util.List;
 
@@ -39,6 +41,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public void onBindViewHolder(CategoriesAdapter.CategoriesViewHolder holder, int position) {
         final Category category = categoryList.get(position);
         holder.textViewCategoryName.setText(category.getLabel());
+        holder.textViewCategory.setText(category.getLabel().substring(0,1).toUpperCase());
+        holder.frameLayoutCategory.setBackgroundColor(ViewUtils.getRandomArgbColor());
         holder.setOnViewClickListener(new CategoriesViewHolder.ViewClickListener() {
             @Override
             public void onViewClickListener(View view) {
@@ -67,6 +71,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public static class CategoriesViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.textViewCategoryName)
         TextView textViewCategoryName;
+        @Bind(R.id.textViewCategory)
+        TextView textViewCategory;
+        @Bind(R.id.frameLayoutCategory)
+        FrameLayout frameLayoutCategory;
         ViewClickListener eventListener;
 
         public CategoriesViewHolder(View itemView) {
@@ -83,7 +91,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         }
 
         public interface ViewClickListener{
-            public void onViewClickListener(View view);
+            void onViewClickListener(View view);
         }
 
         public void setOnViewClickListener(ViewClickListener eventListener){

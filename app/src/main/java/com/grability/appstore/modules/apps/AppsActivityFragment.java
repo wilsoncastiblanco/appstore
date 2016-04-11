@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -66,7 +67,7 @@ public class AppsActivityFragment extends Fragment implements IApplicationsView,
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
             recyclerViewApps.setAdapter(adapter);
             recyclerViewApps.setLayoutManager(mLayoutManager);
-            recyclerViewApps.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewApps.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
         }

@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RESTConstants {
     public static String BASE_URL = "https://itunes.apple.com/us/rss/";
-    public static String LIMIT = "limit=20";
+    public static String LIMIT = "limit=30";
     public static String JSON_FORMAT = "json";
 
     /*API attributes*/

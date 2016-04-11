@@ -1,15 +1,21 @@
 package com.grability.appstore.modules.apps.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.grability.appstore.R;
 import com.grability.appstore.models.ApplicationEntry;
 import com.grability.appstore.models.Category;
+import com.grability.appstore.models.GenericParameters;
+import com.grability.appstore.models.Images;
+import com.grability.appstore.utils.StringUtil;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,7 +45,11 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppsViewHolder
     @Override
     public void onBindViewHolder(AppsAdapter.AppsViewHolder holder, int position) {
         final ApplicationEntry applicationEntry = applicationEntryList.get(position);
+        String appImageUrl = applicationEntry.getBiggestAppImage(applicationEntry.getImagesList());
+        Picasso.with(context).load(appImageUrl).into(holder.imageViewApp);
         holder.textViewAppName.setText(applicationEntry.getName().getLabel());
+        holder.textViewArtist.setText(applicationEntry.getArtist().getLabel());
+        holder.textViewPrice.setText(StringUtil.getInCurrencyFormat(String.valueOf(applicationEntry.getPrice().getAttributes().getAmount()), applicationEntry.getPrice().getAttributes().getCurrency()));
         holder.setOnViewClickListener(new AppsViewHolder.ViewClickListener() {
             @Override
             public void onViewClickListener(View view) {
@@ -68,6 +78,13 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppsViewHolder
     public static class AppsViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.textViewAppName)
         TextView textViewAppName;
+        @Bind(R.id.textViewArtist)
+        TextView textViewArtist;
+        @Bind(R.id.textViewPrice)
+        TextView textViewPrice;
+        @Bind(R.id.imageViewApp)
+        ImageView imageViewApp;
+
         ViewClickListener eventListener;
 
         public AppsViewHolder(View itemView) {
@@ -84,7 +101,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.AppsViewHolder
         }
 
         public interface ViewClickListener{
-            public void onViewClickListener(View view);
+            void onViewClickListener(View view);
         }
 
         public void setOnViewClickListener(ViewClickListener eventListener){

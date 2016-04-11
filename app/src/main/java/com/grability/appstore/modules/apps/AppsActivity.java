@@ -1,13 +1,10 @@
 package com.grability.appstore.modules.apps;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-
 import com.grability.appstore.R;
+import com.grability.appstore.utils.IntentUtil;
 
 public class AppsActivity extends AppCompatActivity {
 
@@ -17,7 +14,8 @@ public class AppsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_apps);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        String title = getIntent().getStringExtra(IntentUtil.KEY_AUX);
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

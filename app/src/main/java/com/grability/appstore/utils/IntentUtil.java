@@ -30,9 +30,10 @@ public class IntentUtil {
     startActivity(activity, CategoriesActivity.class);
   }
 
-  public static void startAppsActivity(Activity activity, String categoryId){
+  public static void startAppsActivity(Activity activity, String categoryId, String categoryName){
     Intent intent = new Intent(activity, AppsActivity.class);
     intent.putExtra(KEY_DATA, categoryId);
+    intent.putExtra(KEY_AUX, categoryName);
     activity.startActivity(intent);
   }
 

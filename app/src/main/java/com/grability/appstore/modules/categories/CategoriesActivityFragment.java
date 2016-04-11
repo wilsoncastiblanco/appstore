@@ -23,6 +23,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -62,7 +63,7 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
             recyclerViewCategories.setAdapter(adapter);
             recyclerViewCategories.setLayoutManager(mLayoutManager);
-            recyclerViewCategories.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewCategories.setItemAnimator(new SlideInUpAnimator());
             AppUtil.hideGoneViews(progressBar);
             adapter.setOnItemClickListener(this);
         }
@@ -81,6 +82,6 @@ public class CategoriesActivityFragment extends Fragment implements ICategoriesV
 
     @Override
     public void onItemClickListener(View view, Category category) {
-        IntentUtil.startAppsActivity(getActivity(), category.getId());
+        IntentUtil.startAppsActivity(getActivity(), category.getId(), category.getLabel());
     }
 }

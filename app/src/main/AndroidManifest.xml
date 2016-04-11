@@ -23,16 +23,16 @@
         </activity>
         <activity
             android:name=".modules.categories.CategoriesActivity"
-            android:label="@string/title_activity_categories"
+            android:label="@string/title.activity_categories"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".modules.loader.LoaderActivity"
-            android:label="@string/title_activity_loader"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".modules.apps.AppsActivity"
-            android:label="@string/title_activity_apps"
+            android:label="@string/title.activity_apps"
+            android:launchMode="singleTop"
             android:parentActivityName=".modules.categories.CategoriesActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".modules.apps.detail.AppDetailActivity"
-            android:label="@string/title_activity_app_detail"
+            android:label="@string/title.activity_app_detail"
             android:parentActivityName=".modules.apps.AppsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">AppStore</string>
-    <string name="title_activity_categories">CategoriesActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_loader">LoaderActivity</string>
-    <string name="message.loading">Loading awesomeness ...</string>
+    <!--Titles-->
+    <string name="title.activity_categories">Categories</string>
+    <string name="title.activity_apps">Apps</string>
+    <string name="title.activity_app_detail">App detail</string>
+
+    <!-- Messages -->
+    <string name="message.loading">Loading awesomeness &#8230;</string>
     <string name="message.error.loader">There was an error loading data</string>
-    <string name="title_activity_apps">AppsActivity</string>
     <string name="message.error.categories">There was an error loading categories</string>
     <string name="message.error.apps">There was an error loading apps</string>
-    <string name="title_activity_app_detail">AppDetailActivity</string>
 </resources>

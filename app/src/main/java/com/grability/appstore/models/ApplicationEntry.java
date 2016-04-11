@@ -10,6 +10,8 @@ import com.grability.appstore.models.GenericParameters;
 import com.grability.appstore.models.Images;
 import com.grability.appstore.models.Price;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -90,5 +92,9 @@ public class ApplicationEntry {
 
     public GenericParameters getTitle() {
         return title;
+    }
+
+    public String getBiggestAppImage(List<GenericParameters<Images>> imagesList ){
+        return imagesList.get(imagesList.size() - 1).getLabel();
     }
 }
